@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--Icon Library-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>Тавтай морил - QR Code үүсгэгч </title>
+</head>
+
+<body>
+    <div class="p-3">
+<h1 class="text-center">Тавтай морил - QR Code үүсгэгч</h1>
+<p class="p-3">
+    Интернэтэд байгаа QR код үүсгэгчүүд ихэнх нь хэрэглээний хязгаарлалттайн дээр үнэтэй байгаа тул энэ асуудалыг үнэгүй шийдхээр боллоо, Та энэ QR код үүсгэгчээр: линк холбоос, текст, утасны QR кодыг үүсгэхэд хялбар байхаар хийлээ. Та эдгээр үүсгэсэн QR кодыг слайд эсвэл үзүүлэн дээрээ нэмж (copy & paste хийж), контентоо сонирхол татахуйц болгож болох ба хэрэглэгчдэд хялбар байдалаар мэдээлэл өгөх эсвэл вэбсайт дээрээ нэмж болно. 
+</p>
+    </div>
+    <div class="row p-5 shadow">
+        <div class="shadow p-3 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+
+            <div class="d-flex justify-content-center shadow">
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-file-text" onclick="formType('planText')"
+                    aria-hidden="true">
+                    <small>Текст</small>
+                
+                </i>
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-link" onclick="formType('siteUrl')" aria-hidden="true">
+                    <small>Линк</small>
+                
+                </i>
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-phone" onclick="formType('Phone')" aria-hidden="true">
+                
+                    <small>Утас</small></i>
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-vcard" onclick="formType('Vcard')" aria-hidden="true"> <small>Нэрийн хуудас</small></i>
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-android" onclick="formType('App')" aria-hidden="true"> <small>App линк</small></i>
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-envelope" onclick="formType('Message')" aria-hidden="true"> <small>Мэссэж</small></i>
+            </div>
+
+            <div class="p-2 flex align-items-center flex-column justify-content-center">
+                <div id="formBlock" class="shadow p-2">
+
+
+
+                </div>
+                <div class="d-flex align-items-center flex-column">
+                    <input type="submit" onclick="QRCodeGenerator()" value="QR Кодоо үүсгэх" id="generateButton"
+                        class="p-2 m-3 bg-secondary text-white rounded border-0 w-50 shadow-lg">
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="shadow p-3 col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+            <h2 class="text-center">QR Код</h2>
+
+            <div class="d-flex justify-content-end">
+                <i class="fa text-center p-2 bg-info m-1 rounded  fa-copy" onclick="copyQR()" aria-hidden="true"> <small>Хуулах</small></i>
+                <i class="fa text-center p-2 bg-info m-1 rounded fa-download" onclick="downloadQR()" aria-hidden="true"> <small>Татах</small></i>
+            </div>
+
+            <div class="p-2">
+                <div class="d-flex align-items-center flex-column" id="qrcode"></div>
+            </div>
+        </div>
+    </div>
+    <div class="p-3">
+        <h1 class="text-center">QR кодыг хэрхэн үүсгэх вэ?</h1>
+        <p class="p-3">
+            Өөрийн өгөгдлийг Qr код руу хөрвүүлэх нь маш хялбар боллоо, Та хэрэгцээндээ таарсан QR кодоо үүсгэхийн тулд ( 'Текст', 'Линк', 'Утас', 'Нэрийн хуудас', 'App линк', 'Мэссэж') - ээс сонгон контенттойгоо холбоотой хамгийн сайн сонголтыг сонгоод, үүсгэх товчийг дарж өгөгдөл болон текстийнхээ Qr кодыг үүсгэнэ үү. Баярлалаа :) 
+        </p>
+            </div>
+            <div class="d-flex p-2 m-3 justify-content-center shadow">
+                <a href="https://www.facebook.com/sainaadotnet" class="text-reset"> <i class="fa text-center p-2 bg-info m-1 rounded fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://www.youtube.com/c/SainaaDotNet" class="text-reset"><i class="fa text-center p-2 bg-info m-1 rounded fa-youtube" aria-hidden="true"></i></a>
+                <a href="https://www.instagram.com/seosainaa/"class="text-reset" ><i class="fa text-center p-2 bg-info m-1 rounded fa-instagram" aria-hidden="true"></i></a>
+               
+                
+                
+
+            </div>
+    <script src="js/qrcode.min.js"></script>
+    <script src="js/qrcode.js"></script>
+</body>
+
+</html>
